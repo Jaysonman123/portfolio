@@ -1,0 +1,406 @@
+.about,
+.ojt-section,
+.achievements {
+  padding: 80px 8%;
+  background: #0b0f19;
+  color: #fff;
+}
+
+/* ================= ABOUT ================= */
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #00e5ff;
+  box-shadow: 0 0 35px rgba(0, 229, 255, .35);
+}
+
+.about-content {
+  flex: 2;
+}
+
+.about-content h1 {
+  font-size: 46px;
+  color: #00e5ff;
+  margin-bottom: 10px;
+}
+
+.about-content h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.about-content p {
+  color: #c8d0dc;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* INFO CARDS */
+
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 35px;
+}
+
+.about-details div {
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .08);
+  padding: 22px;
+  border-radius: 18px;
+  transition: .35s;
+}
+
+.about-details div:hover {
+  transform: translateY(-8px);
+  border-color: #00e5ff;
+  box-shadow: 0 10px 30px rgba(0, 229, 255, .15);
+}
+
+.about-details h3 {
+  color: #00e5ff;
+  margin-bottom: 15px;
+}
+
+.about-btn {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 14px 28px;
+  background: #00e5ff;
+  color: #07111b;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+.about-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 229, 255, .35);
+}
+
+/* GLOBAL SECTION HEADER (Used by OJT & Achievements) */
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h1 {
+  font-size: 46px;
+  color: #00e5ff;
+  margin-bottom: 12px;
+}
+
+.section-title p {
+  color: #b8c0cc;
+  font-size: 18px;
+}
+
+/* ================= OJT EXPERIENCE ================= */
+
+.ojt-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ojt-content h2 {
+  font-size: 34px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.ojt-content h3 {
+  font-size: 20px;
+  color: #00e5ff;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.ojt-content p {
+  color: #c8d0dc;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.ojt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.ojt-grid-card {
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 22px;
+  padding: 35px;
+  transition: .35s;
+}
+
+.ojt-grid-card:hover {
+  transform: translateY(-8px);
+  border-color: #00e5ff;
+  box-shadow: 0 15px 35px rgba(0, 229, 255, .15);
+}
+
+.ojt-grid-card h3 {
+  font-size: 22px;
+  color: #00e5ff;
+  margin-bottom: 15px;
+}
+
+.ojt-grid-card p {
+  color: #b8c0cc;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.ojt-grid-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ojt-grid-card li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  color: #d5d5d5;
+  line-height: 1.6;
+}
+
+/* Custom list bullet line to match the theme design */
+.ojt-grid-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00e5ff;
+  font-weight: bold;
+}
+
+/* ================= OJT DYNAMIC DOCUMENTATION GALLERY ================= */
+
+.ojt-documentation {
+  margin-top: 20px;
+}
+
+.ojt-doc-title {
+  font-size: 24px;
+  color: #00e5ff;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.ojt-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.ojt-doc-card {
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: .35s ease;
+}
+
+.ojt-doc-card:hover {
+  transform: translateY(-6px);
+  border-color: #00e5ff;
+  box-shadow: 0 12px 30px rgba(0, 229, 255, .15);
+}
+
+.ojt-doc-img-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.ojt-doc-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.ojt-doc-card:hover .ojt-doc-img-wrapper img {
+  transform: scale(1.06);
+}
+
+.ojt-doc-info {
+  padding: 20px;
+}
+
+.ojt-doc-info h4 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.ojt-doc-info p {
+  font-size: 14px;
+  color: #b8c0cc;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* ================= OJT SUMMARY ================= */
+
+.ojt-summary {
+  background: rgba(0, 229, 255, .04);
+  border: 1px dashed rgba(0, 229, 255, .25);
+  padding: 25px 30px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.ojt-summary p {
+  margin-bottom: 0;
+}
+
+/* ================= ACHIEVEMENTS ================= */
+
+.achievement-card {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 22px;
+  overflow: hidden;
+  padding: 30px;
+  transition: .35s;
+}
+
+.achievement-card:last-child {
+  margin-bottom: 0;
+}
+
+.achievement-card:hover {
+  transform: translateY(-10px);
+  border-color: #00e5ff;
+  box-shadow: 0 15px 40px rgba(0, 229, 255, .18);
+}
+
+.achievement-image {
+  flex: 1;
+}
+
+.achievement-image img {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+}
+
+.achievement-info {
+  flex: 1.4;
+}
+
+.achievement-info h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.achievement-info span {
+  color: #00e5ff;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.achievement-info p {
+  color: #d5d5d5;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.achievement-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.achievement-info li {
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: 16px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 968px) {
+  .about,
+  .ojt-section,
+  .achievements {
+    padding: 60px 5%;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image img {
+    width: 260px;
+    height: 260px;
+  }
+
+  .about-details {
+    grid-template-columns: 1fr;
+  }
+
+  .ojt-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ojt-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ojt-doc-title {
+    text-align: center;
+  }
+
+  .achievement-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .achievement-info h2 {
+    font-size: 28px;
+  }
+
+  .achievement-info ul {
+    text-align: left;
+    display: inline-block;
+  }
+}

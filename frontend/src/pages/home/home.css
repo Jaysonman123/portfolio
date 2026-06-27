@@ -1,33 +1,415 @@
-.home,
-.about,
-.skills,
-.projects,
-.contact {
-  min-height: 100vh;
-  padding: 100px 60px;
-}
+/* ================= HOME ================= */
 
 .home {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8%;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+
+/* ================= CONTENT ================= */
+
+.content-box {
+  width: 100%;
+  max-width: 650px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.home-content {
+  color: white;
+}
+
+.home-content h1 {
+  margin-bottom: 15px;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.home-content p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+}
+
+.primary-btn {
+  background: #00d9ff;
+  color: #000;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 217, 255, .4);
+}
+
+
+/* ================= TECH STACK SECTION ================= */
+
+.tech-stack {
+  padding: 90px 8%;
+  background: #0f0f12; /* Subtle contrast from pure dark background */
+  color: white;
+  text-align: center;
+}
+
+.tech-stack h2 {
+  margin-bottom: 50px;
+  color: #00d9ff;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: left;
+  /* Specific properties to avoid fighting GSAP opacity/y targets */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.tech-card:hover {
+  border-color: #00d9ff;
+  box-shadow: 0 10px 25px rgba(0, 217, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.tech-card h3 {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-left: 3px solid #00d9ff;
+  padding-left: 12px;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: rgba(0, 217, 255, 0.08);
+  color: #00d9ff;
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.skill-tag:hover {
+  background: #00d9ff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+
+/* ================= CERTIFICATES ================= */
+
+.certificates {
+  padding: 90px 8%;
+  background: #080808;
+  color: white;
+  text-align: center;
+}
+
+.certificates h2 {
+  margin-bottom: 50px;
+  color: #00d9ff;
+  font-size: 40px;
+}
+
+/* Carousel */
+
+.certificate-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.certificate-container {
+  width: 100%;
+  display: flex;
+  gap: 35px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  scrollbar-width: none;
+}
+
+.certificate-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ================= CARD ================= */
+
+.certificate-card {
+  flex: 0 0 420px;
+  padding: 25px;
+  text-align: left;
+  border-radius: 20px;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, .2);
+
+  /* FIXED: Changed to specific border/box-shadow updates 
+     to prevent collision with GSAP scaling & scroll triggers */
+  transition: border-color .3s ease, box-shadow .3s ease; 
+}
+
+.certificate-card:hover {
+  transform: translateY(-10px) scale(1.02); 
+  border-color: #00d9ff;
+  box-shadow: 0 15px 35px rgba(0, 217, 255, .25);
+}
+
+
+/* ================= IMAGE ================= */
+
+.certificate-image-box,
+.certificate-placeholder {
+  width: 100%;
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  border-radius: 15px;
+}
+
+.certificate-image-box {
+  background: white;
+  overflow: hidden;
+}
+
+.certificate-image {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  object-fit: contain;
+}
+
+.rotate-image {
+  width: 120%;
+  height: 120%;
+}
+
+.certificate-placeholder {
+  background: #222;
+  color: #aaa;
+  font-size: 25px;
+}
+
+
+/* ================= TEXT ================= */
+
+.certificate-card h3 {
+  margin-bottom: 12px;
+  font-size: 23px;
+  line-height: 1.3;
+}
+
+.certificate-card h4,
+.certificate-card small {
+  color: #00d9ff;
+}
+
+.certificate-card h4 {
+  margin-bottom: 8px;
+}
+
+.certificate-card span {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.certificate-card small {
+  display: block;
+  margin-top: 8px;
+}
+
+.certificate-card p {
+  margin: 18px 0 25px;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+
+/* ================= CERTIFICATE BUTTON ================= */
+
+.certificate-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 30px;
+  background: #00d9ff;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  transition: .3s ease;
+}
+
+.certificate-btn:hover {
+  background: white;
+  transform: translateY(-3px);
+}
+
+
+/* ================= CAROUSEL BUTTON ================= */
+
+.carousel-btn {
+  position: absolute;
+  z-index: 5;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
   background: #111;
   color: white;
+  font-size: 25px;
+  cursor: pointer;
+  transition: .3s;
 }
 
-.about {
-  background: #222;
-  color: white;
+.carousel-btn:hover {
+  background: #00d9ff;
+  color: black;
 }
 
-.skills {
-  background: #333;
-  color: white;
+.carousel-btn.prev {
+  left: 10px;
 }
 
-.projects {
-  background: #444;
-  color: white;
+.carousel-btn.next {
+  right: 10px;
 }
 
-.contact {
-  background: #555;
-  color: white;
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 900px) {
+  .certificate-card {
+    flex: 0 0 350px;
+  }
+}
+
+@media(max-width: 768px) {
+  .overlay {
+    padding: 20px;
+  }
+
+  .content-box {
+    padding: 25px;
+  }
+
+  .home-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tech-stack {
+    padding: 60px 20px;
+  }
+
+  .tech-stack h2 {
+    font-size: 32px;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificates {
+    padding: 60px 20px;
+  }
+
+  .certificates h2 {
+    font-size: 32px;
+  }
+
+  .certificate-card {
+    flex: 0 0 90%;
+    text-align: center;
+  }
+
+  .certificate-image-box,
+  .certificate-placeholder {
+    height: 230px;
+  }
+
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
 }

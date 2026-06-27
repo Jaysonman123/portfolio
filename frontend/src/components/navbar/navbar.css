@@ -1,15 +1,26 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 80px; /* bigger navbar height and side spacing */
-  background-color: #111;
+  padding: 25px 80px;
+
+  background: rgba(70, 70, 70, 0.35); /* Transparent gray */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  z-index: 1000;
+  box-sizing: border-box;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 40px; /* more space between links */
+  gap: 40px;
 
   position: absolute;
   left: 50%;
@@ -19,11 +30,46 @@
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-size: 20px; /* bigger text */
-  font-weight: 600; /* thicker font */
-  transition: 0.3s;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+
+  /* Smooth animation */
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
+/* Hover effect */
 .nav-links a:hover {
   color: #00bcd4;
+  transform: translateY(-3px);
+}
+
+/* Active navigation link */
+.nav-links a.active {
+  color: #00bcd4;
+
+  /* Move active text slightly upward */
+  transform: translateY(-4px);
+}
+
+/* Active underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 3px;
+  background-color: #00bcd4;
+  border-radius: 10px;
+
+  transition: width 0.3s ease;
+}
+
+/* Show underline on active link */
+.nav-links a.active::after {
+  width: 100%;
 }

@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 80px; /* bigger navbar height and side spacing */
+  background-color: #111;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 40px; /* more space between links */
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px; /* bigger text */
+  font-weight: 600; /* thicker font */
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00bcd4;
+}

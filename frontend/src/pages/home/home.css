@@ -1,0 +1,33 @@
+.home,
+.about,
+.skills,
+.projects,
+.contact {
+  min-height: 100vh;
+  padding: 100px 60px;
+}
+
+.home {
+  background: #111;
+  color: white;
+}
+
+.about {
+  background: #222;
+  color: white;
+}
+
+.skills {
+  background: #333;
+  color: white;
+}
+
+.projects {
+  background: #444;
+  color: white;
+}
+
+.contact {
+  background: #555;
+  color: white;
+}

@@ -158,7 +158,7 @@ function About() {
               <div>
                 <h3>Education & Family</h3>
                 <p>
-                  Bachelor of Science in IT
+                  Bachelor of Science in IT (Batch 2025-2026)
                   <br />
                   Cavite State University
                   <br />
@@ -169,17 +169,6 @@ function About() {
                     <br />
                     Gerry Alicman & Lily Alicman
                   </span>
-                </p>
-              </div>
-
-              <div>
-                <h3>Skills</h3>
-                <p>
-                  React.js <br />
-                  ASP.NET <br />
-                  Laravel <br />
-                  Python <br />
-                  MySQL
                 </p>
               </div>
             </div>

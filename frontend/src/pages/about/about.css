@@ -53,19 +53,18 @@
   margin-bottom: 15px;
 }
 
-/* INFO CARDS */
-
+/* INFO CARDS (Updated for 2 Bigger Columns) */
 .about-details {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr); /* Switched from 3 columns to 2 columns */
+  gap: 25px; /* Slightly wider gap for spacious feel */
   margin-top: 35px;
 }
 
 .about-details div {
   background: rgba(255, 255, 255, .05);
   border: 1px solid rgba(255, 255, 255, .08);
-  padding: 22px;
+  padding: 30px; /* Increased padding from 22px to make the boxes bigger */
   border-radius: 18px;
   transition: .35s;
 }

@@ -1,0 +1,148 @@
+/* Dark Mode Variable Fallbacks with Neon Cyan Accent */
+:root {
+  --bg-section: #0b0f19; /* Deep, sleek dark background */
+  --bg-card: #151d30;    /* Slightly lighter dark tone for cards */
+  --text-main: #f3f4f6;   /* Clean white for readability */
+  --text-muted: #9ca3af;  /* Subdued grey for descriptions */
+  --primary-color: #00d9ff; /* Your exact vibrant cyan accent */
+  --radius: 8px;
+  --shadow: 0 4px 12px rgb(0 217 255 / 0.1); /* Subtle glowing accent shadow */
+}
+
+.projects-container {
+  padding: 4rem 2rem;
+  background-color: var(--bg-section);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.projects-header h1 {
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.projects-header .subtitle {
+  font-size: 1.1rem;
+  color: var(--primary-color); /* Cyan subtitle */
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.header-bar {
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color); /* Cyan underline bar */
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* Grid Layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Project Cards */
+.project-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 0; /* Changed to 0 so the image fits flush against the card edges */
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #1e293b; /* Subtle dark border */
+  overflow: hidden; /* Ensures image respects the card's border radius */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  /* The card gets a beautiful subtle neon glow on hover */
+  box-shadow: 0 12px 24px rgb(0 217 255 / 0.2); 
+  border-color: var(--primary-color); /* Border lights up cyan on hover */
+}
+
+/* --- Added: Project Image Container Styles --- */
+.project-image-container {
+  width: 100%;
+  height: 200px; /* Adjust height to your liking */
+  overflow: hidden;
+  background-color: #0d1527; /* Fallback dark background while image loads */
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintains aspect ratio without squishing */
+  transition: transform 0.5s ease; /* Smooth zoom transition */
+}
+
+/* Optional: Slight zoom effect on image when hovering over the card */
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+/* --- Added: Project Text Content Wrapper --- */
+.project-content {
+  padding: 2rem; /* Re-applied the original card padding here */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-tag {
+  align-self: flex-start;
+  background-color: rgb(0 217 255 / 0.12); /* Translucent cyan background */
+  color: var(--primary-color); /* Vibrant cyan tag text */
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-card h3 {
+  font-size: 1.35rem;
+  color: var(--text-main);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.4;
+}
+
+.project-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.project-footer {
+  border-top: 1px solid #1e293b; /* Dark divider line */
+  padding-top: 1rem;
+}
+
+.view-project {
+  font-size: 0.9rem;
+  color: var(--primary-color); /* Cyan text link */
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.view-project:hover {
+  color: #ffffff; /* Turns white on hover for a crisp contrast swap */
+  text-shadow: 0 0 8px var(--primary-color); /* Subtle glow effect on hover */
+}

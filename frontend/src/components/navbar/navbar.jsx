@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Link, useLocation } from "react-router-dom";
@@ -5,6 +6,7 @@ import "./navbar.css";
 
 function Navbar() {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useGSAP(() => {
     gsap.from(".nav-links li", {
@@ -14,7 +16,7 @@ function Navbar() {
       stagger: 0.1,
       ease: "power3.out",
     });
-  });
+  }, [menuOpen]);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -24,7 +26,6 @@ function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
-  // ✅ Active route logic (includes /gallery under Projects)
   const isActive = (item) => {
     if (item.path === "/projects") {
       return (
@@ -32,15 +33,25 @@ function Navbar() {
         location.pathname === "/gallery"
       );
     }
-
     return location.pathname === item.path;
   };
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className="navbar">
-      <ul className="nav-links">
+      {/* Hamburger Button (Mobile) */}
+      <div className="hamburger" onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Nav Links */}
+      <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
         {navItems.map((item) => (
-          <li key={item.path}>
+          <li key={item.path} onClick={closeMenu}>
             <Link
               to={item.path}
               className={isActive(item) ? "active" : ""}

@@ -24,6 +24,18 @@ function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
+  // ✅ Active route logic (includes /gallery under Projects)
+  const isActive = (item) => {
+    if (item.path === "/projects") {
+      return (
+        location.pathname === "/projects" ||
+        location.pathname === "/gallery"
+      );
+    }
+
+    return location.pathname === item.path;
+  };
+
   return (
     <nav className="navbar">
       <ul className="nav-links">
@@ -31,7 +43,7 @@ function Navbar() {
           <li key={item.path}>
             <Link
               to={item.path}
-              className={location.pathname === item.path ? "active" : ""}
+              className={isActive(item) ? "active" : ""}
             >
               {item.name}
             </Link>

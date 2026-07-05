@@ -40,6 +40,10 @@ function Footer() {
           <a href="mailto:jaysonman790@gmail.com">
             Email - jaysonman790@gmail.com
           </a>
+
+          <a href="tel:+639811954487">
+            Contact - 09811954487
+          </a>
         </div>
       </div>
 

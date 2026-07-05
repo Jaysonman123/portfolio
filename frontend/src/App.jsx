@@ -12,7 +12,7 @@ import Gallery from "./pages/projects/gallery.jsx"; // ✅ correct path
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
       <Navbar />
 
       <Routes>

@@ -12,6 +12,8 @@ import certAsp from "../assets/cert_asp.jpg";
 import certIsiteCpp from "../assets/isite_cpp.jpg";
 import python3rd from "../assets/python_3rd.jpg";
 import isitetop from "../assets/isite_top.jpg";
+import treceEgov from "../assets/Trece_Egov.jpg";
+import alicmanEgovPdf from "../assets/Alicman_Egov.pdf";
 
 // Eager load documentation and project images
 const ojtImagesGlob = import.meta.glob("../assets/ojt/*.{png,jpg,jpeg,svg,webp}", { eager: true });
@@ -521,6 +523,15 @@ function SinglePagePortfolio() {
       date: "Academic Year 2025",
       desc: "Distinguished as one of the top Python developers across the campus, demonstrating mastery of algorithmic design, data structures, and practical software creation.",
     },
+    {
+      title: "Egov Hackathon 2026 - Top 30 Finalist",
+      issuer: "eGov Philippines · National Hackathon",
+      date: "2026",
+      desc: "Recognized as a Top 30 Finalist in the national eGov Hackathon 2026, competing against teams nationwide in developing innovative e-governance digital solutions.",
+      isPdf: true,
+      pdfLink: alicmanEgovPdf,
+      image: treceEgov,
+    },
   ];
 
   const visibleOjtImages = isOjtExpanded ? ojtGallery : ojtGallery.slice(0, 6);
@@ -602,12 +613,17 @@ function SinglePagePortfolio() {
                   <span className="stat-value">Top 15</span>
                   <span className="stat-label">University C++ Finalist</span>
                 </div>
+                <div className="stat-card">
+                  <span className="stat-value">Top 30</span>
+                  <span className="stat-label">Egov Hackathon Finalist</span>
+                </div>
               </div>
               <div className="glass-box-footer">
                 <span className="mini-tag">Python & AI</span>
                 <span className="mini-tag">React.js</span>
                 <span className="mini-tag">ASP.NET</span>
                 <span className="mini-tag">MySQL</span>
+                <span className="mini-tag">eGov</span>
               </div>
             </div>
           </div>
@@ -971,6 +987,32 @@ function SinglePagePortfolio() {
                     </p>
                   </div>
                 </div>
+
+                {/* Award 3: Egov Hackathon 2026 - Top 30 Finalist */}
+                <div className="achievement-minimal-card">
+                  <div className="achievement-img-box" onClick={() => openSingleImageModal("Egov Hackathon 2026 - Top 30 Finalist", treceEgov)}>
+                    <img src={treceEgov} alt="Egov Hackathon 2026 Top 30 Finalist" />
+                    <div className="photo-hover-overlay"><span>Enlarge 🔍</span></div>
+                  </div>
+                  <div className="achievement-content">
+                    <span className="award-badge">Top 30 Finalist · National Hackathon</span>
+                    <h3>Egov Hackathon 2026 - Top 30 Finalist</h3>
+                    <p className="award-source">eGov Philippines</p>
+                    <p className="award-desc">
+                      Competed in the national eGov Hackathon 2026 and achieved Top 30 Finalist standing, 
+                      developing innovative e-governance digital solutions alongside top teams from across the Philippines.
+                    </p>
+                    <a
+                      href={alicmanEgovPdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cert-download-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      📄 View Certificate (PDF) ↗
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -1081,6 +1123,17 @@ function SinglePagePortfolio() {
                   <span className="cert-issuer">{cert.issuer}</span>
                   <span className="cert-date">{cert.date}</span>
                   <p className="cert-desc">{cert.desc}</p>
+                  {cert.isPdf && (
+                    <a
+                      href={cert.pdfLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cert-download-link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      📄 View Certificate (PDF) ↗
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

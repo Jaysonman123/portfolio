@@ -5,7 +5,7 @@ import SinglePagePortfolio from "./pages/SinglePagePortfolio.jsx";
 
 function App() {
   return (
-    <BrowserRouter basename="/portfolio">
+    <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<SinglePagePortfolio />} />

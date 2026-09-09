@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { gsap } from "gsap";
 import "./navbar.css";
 
 function Navbar() {
@@ -16,16 +15,7 @@ function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
 
-  // Reload entrance animation
-  useEffect(() => {
-    gsap.from(".navbar-header", {
-      y: -60,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      delay: 0.1,
-    });
-  }, []);
+  // Navbar is always visible via CSS - no entrance animation needed
 
   useEffect(() => {
     const handleScroll = () => {

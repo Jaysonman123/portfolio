@@ -34,6 +34,7 @@ const projectImagesGlob = import.meta.glob(
 );
 
 const tickerItems = [
+  "Lilyanz Hardware E-Commerce (Live)",
   "Python & AI Systems",
   "React.js Web Applications",
   "Computer Vision & Biometrics",
@@ -279,6 +280,7 @@ function SinglePagePortfolio() {
 
   // Project Folder Mapping
   const folderMapping = {
+    8: "lilyanz",
     3: "Incident",
     6: "Mood",
     7: "Qsystem",
@@ -317,6 +319,7 @@ function SinglePagePortfolio() {
       title: project.title,
       description: project.description,
       tag: project.tag,
+      liveUrl: project.liveUrl,
       images: imgs.length > 0 ? imgs : [getProjectThumbnail(project.id)],
       currentIndex: 0,
     });
@@ -416,6 +419,19 @@ function SinglePagePortfolio() {
   // Projects Data
   const projectsData = [
     {
+      id: 8,
+      title: "Lilyanz Hardware & Supply E-Commerce",
+      category: "Web",
+      categoryLabel: "E-Commerce · Live App",
+      status: "Current Working Project",
+      tag: "React.js · E-Commerce · Live Deployment",
+      description: "A production-grade, responsive e-commerce web application engineered for Lilyanz Hardware & Supply in Naic, Cavite. Features real-time catalog search, construction tools & materials categories, dynamic shopping cart calculation, and streamlined online order workflows.",
+      metrics: "Live on Vercel · Production E-Commerce",
+      liveUrl: "https://lilyanz-ecom.vercel.app/",
+      isLive: true,
+      isFeatured: true,
+    },
+    {
       id: 3,
       title: "Incident Profiling with Face Recognition",
       category: "AI",
@@ -491,6 +507,7 @@ function SinglePagePortfolio() {
 
   const projectTabs = [
     { id: "All", label: "All Projects" },
+    { id: "Live", label: "🔥 Live / Current" },
     { id: "AI", label: "AI & Computer Vision" },
     { id: "Enterprise", label: "Enterprise & Healthcare" },
     { id: "Web", label: "Web Applications" },
@@ -498,6 +515,8 @@ function SinglePagePortfolio() {
 
   const filteredProjects = projectFilter === "All"
     ? projectsData
+    : projectFilter === "Live"
+    ? projectsData.filter((p) => p.isLive)
     : projectsData.filter((p) => p.category === projectFilter);
 
   // Certificates Data
@@ -598,8 +617,12 @@ function SinglePagePortfolio() {
               </div>
               <div className="hero-stats-grid">
                 <div className="stat-card">
-                  <span className="stat-value">8+</span>
+                  <span className="stat-value">9+</span>
                   <span className="stat-label">Deployed Systems</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-value">Live</span>
+                  <span className="stat-label">Lilyanz E-Commerce</span>
                 </div>
                 <div className="stat-card">
                   <span className="stat-value">Lead</span>
@@ -610,20 +633,16 @@ function SinglePagePortfolio() {
                   <span className="stat-label">Python Programmer (CvSU)</span>
                 </div>
                 <div className="stat-card">
-                  <span className="stat-value">Top 15</span>
-                  <span className="stat-label">University C++ Finalist</span>
-                </div>
-                <div className="stat-card">
                   <span className="stat-value">Top 30</span>
                   <span className="stat-label">Egov Hackathon Finalist</span>
                 </div>
               </div>
               <div className="glass-box-footer">
+                <span className="mini-tag">Lilyanz E-Com</span>
                 <span className="mini-tag">Python & AI</span>
                 <span className="mini-tag">React.js</span>
                 <span className="mini-tag">ASP.NET</span>
                 <span className="mini-tag">MySQL</span>
-                <span className="mini-tag">eGov</span>
               </div>
             </div>
           </div>
@@ -1050,7 +1069,7 @@ function SinglePagePortfolio() {
               const projectImages = getProjectImages(project.id);
 
               return (
-                <div key={project.id} className="project-minimal-card">
+                <div key={project.id} className={`project-minimal-card ${project.isFeatured ? "featured-project-card" : ""}`}>
                   <div
                     className="card-thumbnail-wrapper"
                     onClick={() => openProjectModal(project)}
@@ -1061,7 +1080,15 @@ function SinglePagePortfolio() {
                       className="card-thumbnail"
                       loading="lazy"
                     />
-                    <div className="thumbnail-badge">{project.categoryLabel}</div>
+                    <div className="thumbnail-badge-group">
+                      <div className="thumbnail-badge">{project.categoryLabel}</div>
+                      {project.isLive && (
+                        <div className="thumbnail-live-badge">
+                          <span className="live-dot-pulse"></span>
+                          <span>LIVE</span>
+                        </div>
+                      )}
+                    </div>
                     <div className="thumbnail-overlay">
                       <span>View Gallery & Details ({projectImages.length || 1} Images) ↗</span>
                     </div>
@@ -1073,6 +1100,22 @@ function SinglePagePortfolio() {
                     <p className="project-card-desc">{project.description}</p>
 
                     <div className="project-card-footer">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-live-link"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <span className="live-dot-pulse"></span>
+                          <span>Live Demo</span>
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                          </svg>
+                        </a>
+                      )}
                       <button
                         className="btn-view-gallery"
                         onClick={() => openProjectModal(project)}
@@ -1232,9 +1275,22 @@ function SinglePagePortfolio() {
                 <span className="lightbox-tag">{lightbox.tag}</span>
                 <h3 className="lightbox-title">{lightbox.title}</h3>
               </div>
-              <button className="lightbox-close-btn" onClick={closeLightbox} aria-label="Close modal">
-                ✕
-              </button>
+              <div className="lightbox-header-actions">
+                {lightbox.liveUrl && (
+                  <a
+                    href={lightbox.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="lightbox-live-badge-btn"
+                  >
+                    <span className="live-dot-pulse"></span>
+                    <span>Live Website ↗</span>
+                  </a>
+                )}
+                <button className="lightbox-close-btn" onClick={closeLightbox} aria-label="Close modal">
+                  ✕
+                </button>
+              </div>
             </div>
 
             {/* Main Stage */}
@@ -1272,6 +1328,20 @@ function SinglePagePortfolio() {
             <div className="lightbox-footer">
               {lightbox.description && (
                 <p className="lightbox-desc">{lightbox.description}</p>
+              )}
+
+              {lightbox.liveUrl && (
+                <div className="lightbox-live-bar">
+                  <span>🌐 Live Application URL:</span>
+                  <a
+                    href={lightbox.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="lightbox-url-link"
+                  >
+                    {lightbox.liveUrl} ↗
+                  </a>
+                </div>
               )}
 
               {lightbox.images.length > 1 && (

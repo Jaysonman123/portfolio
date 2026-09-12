@@ -37,6 +37,7 @@ function Gallery() {
       setLoading(true);
       try {
         const folderMapping = {
+          8: "lilyanz",
           3: "Incident", 
           6: "Mood",
           7: "Qsystem",

@@ -12,6 +12,7 @@ function Projects() {
 
   // 1. Same folder mapping as your gallery component
   const folderMapping = {
+    8: "lilyanz",
     3: "Incident", 
     6: "Mood",
     7: "Qsystem",
@@ -48,6 +49,14 @@ function Projects() {
   };
 
   const projectList = [
+    {
+      id: 8,
+      title: "Lilyanz Hardware & Supply E-Commerce",
+      description:
+        "A full-featured responsive hardware & construction supply e-commerce web platform for Lilyanz Hardware with real-time search, cart, and live deployment.",
+      tag: "React.js / E-Commerce / Live on Vercel",
+      liveUrl: "https://lilyanz-ecom.vercel.app/",
+    },
     {
       id: 3,
       title: "Incident Profiling with Face Recognition",

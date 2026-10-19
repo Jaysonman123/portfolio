@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./SinglePagePortfolio.css";
+import BurritoChatWidget from "../components/BurritoChatWidget/BurritoChatWidget.jsx";
+import TechIcon from "../components/TechIcon/TechIcon.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +16,8 @@ import python3rd from "../assets/python_3rd.jpg";
 import isitetop from "../assets/isite_top.jpg";
 import treceEgov from "../assets/Trece_Egov.jpg";
 import alicmanEgovPdf from "../assets/Alicman_Egov.pdf";
+import burritoImage from "../assets/image.png";
+import egovTop5 from "../assets/Egov_top_5.png";
 
 // Eager load documentation and project images
 const ojtImagesGlob = import.meta.glob("../assets/ojt/*.{png,jpg,jpeg,svg,webp}", { eager: true });
@@ -34,6 +38,7 @@ const projectImagesGlob = import.meta.glob(
 );
 
 const tickerItems = [
+  "Burrito AI Multi-Model Assistant (Live)",
   "Lilyanz Hardware E-Commerce (Live)",
   "Python & AI Systems",
   "React.js Web Applications",
@@ -280,6 +285,7 @@ function SinglePagePortfolio() {
 
   // Project Folder Mapping
   const folderMapping = {
+    9: "burrito",
     8: "lilyanz",
     3: "Incident",
     6: "Mood",
@@ -306,7 +312,8 @@ function SinglePagePortfolio() {
     return matches;
   };
 
-  const getProjectThumbnail = (id) => {
+  const getProjectThumbnail = (id, customThumb = null) => {
+    if (customThumb) return customThumb;
     const imgs = getProjectImages(id);
     return imgs.length > 0 ? imgs[0] : "https://via.placeholder.com/600x380/121622/38bdf8?text=Project+Preview";
   };
@@ -314,13 +321,14 @@ function SinglePagePortfolio() {
   // Open Lightbox for Projects
   const openProjectModal = (project) => {
     const imgs = getProjectImages(project.id);
+    const resolvedImages = imgs.length > 0 ? imgs : (project.customThumbnail ? [project.customThumbnail] : [getProjectThumbnail(project.id)]);
     setLightbox({
       isOpen: true,
       title: project.title,
       description: project.description,
       tag: project.tag,
       liveUrl: project.liveUrl,
-      images: imgs.length > 0 ? imgs : [getProjectThumbnail(project.id)],
+      images: resolvedImages,
       currentIndex: 0,
     });
   };
@@ -373,32 +381,78 @@ function SinglePagePortfolio() {
     {
       category: "Programming Languages",
       group: "Languages",
-      skills: ["Python", "JavaScript (ES6+)", "Java", "C++", "C", "SQL"],
+      skills: [
+        { name: "Python", iconKey: "python" },
+        { name: "JavaScript", iconKey: "javascript" },
+        { name: "Java", iconKey: "java" },
+        { name: "C++", iconKey: "cpp" },
+        { name: "C", iconKey: "c" },
+        { name: "SQL", iconKey: "sql" },
+      ],
     },
     {
       category: "Frontend Development",
       group: "Frontend",
-      skills: ["React.js", "HTML5", "CSS3", "JavaScript", "Tailwind CSS", "Bootstrap", "GSAP Animations", "Responsive UI"],
+      skills: [
+        { name: "React.js", iconKey: "react" },
+        { name: "HTML5", iconKey: "html5" },
+        { name: "CSS3", iconKey: "css3" },
+        { name: "Tailwind CSS", iconKey: "tailwind" },
+        { name: "Bootstrap", iconKey: "bootstrap" },
+        { name: "GSAP Motion", iconKey: "gsap" },
+        { name: "Responsive UI", iconKey: "responsive" },
+      ],
     },
     {
       category: "Backend & Database",
       group: "Backend",
-      skills: ["ASP.NET", ".NET Framework", "Laravel", "CodeIgniter", "REST API Development", "MySQL", "SQLite", "XAMPP", "CRUD Architectures"],
+      skills: [
+        { name: "ASP.NET", iconKey: "aspnet" },
+        { name: ".NET Framework", iconKey: "dotnet" },
+        { name: "Laravel", iconKey: "laravel" },
+        { name: "CodeIgniter", iconKey: "codeigniter" },
+        { name: "REST APIs", iconKey: "api" },
+        { name: "MySQL", iconKey: "mysql" },
+        { name: "SQLite", iconKey: "sqlite" },
+        { name: "XAMPP", iconKey: "xampp" },
+      ],
     },
     {
       category: "Computer Vision & AI",
       group: "AI",
-      skills: ["Face Recognition", "Biometric Identification", "Computer Vision", "Real-Time OpenCV", "Incident Profiling Logic", "Spatial Coordinates Analysis"],
+      skills: [
+        { name: "Burrito AI / LLMs", iconKey: "burrito" },
+        { name: "OpenCV", iconKey: "opencv" },
+        { name: "Face Recognition", iconKey: "facerecog" },
+        { name: "Biometrics ID", iconKey: "biometrics" },
+        { name: "Computer Vision", iconKey: "computervision" },
+        { name: "Python AI", iconKey: "python" },
+      ],
     },
     {
       category: "Infrastructure & Networking",
       group: "Infrastructure",
-      skills: ["LAN Configuration", "Router & Switch Setup", "Network Topology Design", "Hardware Repair & Maintenance", "Technical Support", "Helpdesk Diagnostics"],
+      skills: [
+        { name: "LAN Routing", iconKey: "lan" },
+        { name: "Routers & Switches", iconKey: "router" },
+        { name: "Network Topology", iconKey: "network" },
+        { name: "Hardware Repair", iconKey: "hardware" },
+        { name: "Technical Support", iconKey: "techsupport" },
+        { name: "Helpdesk IT", iconKey: "helpdesk" },
+      ],
     },
     {
       category: "Engineering & Leadership",
       group: "Core",
-      skills: ["Tech Lead & Project Management", "System Analysis & Design", "Database Architecture", "Agile Methodologies", "Git & GitHub Version Control", "Software Testing & QA"],
+      skills: [
+        { name: "Git", iconKey: "git" },
+        { name: "GitHub", iconKey: "github" },
+        { name: "Tech Lead", iconKey: "techlead" },
+        { name: "System Design", iconKey: "systemdesign" },
+        { name: "DB Architecture", iconKey: "dbarchitecture" },
+        { name: "Agile & Scrum", iconKey: "agile" },
+        { name: "Software Testing", iconKey: "testing" },
+      ],
     },
   ];
 
@@ -418,6 +472,20 @@ function SinglePagePortfolio() {
 
   // Projects Data
   const projectsData = [
+    {
+      id: 9,
+      title: "Burrito AI — Intelligent Multi-Model Assistant",
+      category: "AI",
+      categoryLabel: "AI Chatbot · Live App",
+      status: "Featured AI Project",
+      tag: "React.js · Multi-Model LLMs · Streaming Completions · Voice Dictation",
+      description: "A next-generation multi-model AI chatbot workspace engineered by Mark Jayson Alicman. Features real-time streaming completions, dynamic multi-model LLM routing (GPT-4o, Claude 3.5 Sonnet, Gemini Pro), syntax code highlighting, voice dictation, customizable theme switching, and persistent conversational workspaces.",
+      metrics: "Live on Vercel · Multi-Model AI Assistant",
+      liveUrl: "https://burritoai.vercel.app/",
+      customThumbnail: burritoImage,
+      isLive: true,
+      isFeatured: true,
+    },
     {
       id: 8,
       title: "Lilyanz Hardware & Supply E-Commerce",
@@ -543,13 +611,13 @@ function SinglePagePortfolio() {
       desc: "Distinguished as one of the top Python developers across the campus, demonstrating mastery of algorithmic design, data structures, and practical software creation.",
     },
     {
-      title: "Egov Hackathon 2026 - Top 30 Finalist",
-      issuer: "eGov Philippines · National Hackathon",
+      title: "eGov PH Hackathon 2026 - Top 5 Finalist (Team DevOops)",
+      issuer: "eGov Philippines · Team DevOops",
       date: "2026",
-      desc: "Recognized as a Top 30 Finalist in the national eGov Hackathon 2026, competing against teams nationwide in developing innovative e-governance digital solutions.",
+      desc: "Recognized as a Top 5 Finalist in the national eGov PH Hackathon 2026 with Team DevOops, presenting innovative public sector digital systems and governance automation on the national stage.",
       isPdf: true,
       pdfLink: alicmanEgovPdf,
-      image: treceEgov,
+      image: egovTop5,
     },
   ];
 
@@ -617,8 +685,12 @@ function SinglePagePortfolio() {
               </div>
               <div className="hero-stats-grid">
                 <div className="stat-card">
-                  <span className="stat-value">9+</span>
+                  <span className="stat-value">10+</span>
                   <span className="stat-label">Deployed Systems</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-value">Live</span>
+                  <span className="stat-label">Burrito AI Chatbot</span>
                 </div>
                 <div className="stat-card">
                   <span className="stat-value">Live</span>
@@ -633,11 +705,12 @@ function SinglePagePortfolio() {
                   <span className="stat-label">Python Programmer (CvSU)</span>
                 </div>
                 <div className="stat-card">
-                  <span className="stat-value">Top 30</span>
-                  <span className="stat-label">Egov Hackathon Finalist</span>
+                  <span className="stat-value">Top 5</span>
+                  <span className="stat-label">eGov Hackathon (DevOops)</span>
                 </div>
               </div>
               <div className="glass-box-footer">
+                <span className="mini-tag">Burrito AI</span>
                 <span className="mini-tag">Lilyanz E-Com</span>
                 <span className="mini-tag">Python & AI</span>
                 <span className="mini-tag">React.js</span>
@@ -775,13 +848,20 @@ function SinglePagePortfolio() {
                 <div className="category-header">
                   <span className="category-indicator"></span>
                   <h3>{category.category}</h3>
+                  <span className="category-count-badge">{category.skills.length} Techs</span>
                 </div>
-                <div className="tags-container">
-                  {category.skills.map((skill, sIdx) => (
-                    <span key={sIdx} className="minimal-tag">
-                      {skill}
-                    </span>
-                  ))}
+                <div className="tech-tiles-container">
+                  {category.skills.map((skill, sIdx) => {
+                    const iconKey = typeof skill === "object" ? skill.iconKey : skill.toLowerCase().replace(/[^a-z]/g, "");
+                    const name = typeof skill === "object" ? skill.name : skill;
+                    return (
+                      <TechIcon
+                        key={sIdx}
+                        iconKey={iconKey}
+                        customLabel={name}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -1007,19 +1087,20 @@ function SinglePagePortfolio() {
                   </div>
                 </div>
 
-                {/* Award 3: Egov Hackathon 2026 - Top 30 Finalist */}
+                {/* Award 3: eGov PH Hackathon 2026 - Top 5 Finalist (Team DevOops) */}
                 <div className="achievement-minimal-card">
-                  <div className="achievement-img-box" onClick={() => openSingleImageModal("Egov Hackathon 2026 - Top 30 Finalist", treceEgov)}>
-                    <img src={treceEgov} alt="Egov Hackathon 2026 Top 30 Finalist" />
+                  <div className="achievement-img-box" onClick={() => openSingleImageModal("eGov PH Hackathon 2026 - Top 5 Finalist (Team DevOops)", egovTop5, "Team DevOops announced on stage among the prestigious Top 5 finalists at the national eGov Philippines Hackathon 2026.")}>
+                    <img src={egovTop5} alt="eGov PH Hackathon 2026 Top 5 Finalist - Team DevOops" />
                     <div className="photo-hover-overlay"><span>Enlarge 🔍</span></div>
                   </div>
                   <div className="achievement-content">
-                    <span className="award-badge">Top 30 Finalist · National Hackathon</span>
-                    <h3>Egov Hackathon 2026 - Top 30 Finalist</h3>
-                    <p className="award-source">eGov Philippines</p>
+                    <span className="award-badge">Top 5 Finalist · National Hackathon</span>
+                    <h3>eGov PH Hackathon 2026 - Top 5 Finalist</h3>
+                    <p className="award-source">eGov Philippines · Team DevOops</p>
                     <p className="award-desc">
-                      Competed in the national eGov Hackathon 2026 and achieved Top 30 Finalist standing, 
-                      developing innovative e-governance digital solutions alongside top teams from across the Philippines.
+                      Competed in the national eGov PH Hackathon 2026 as <strong>Team DevOops</strong> and achieved 
+                      <strong> Top 5 Finalist</strong> standing nationwide, developing and pitching innovative e-governance digital 
+                      solutions on the national stage.
                     </p>
                     <a
                       href={alicmanEgovPdf}
@@ -1065,7 +1146,7 @@ function SinglePagePortfolio() {
           {/* Projects Card Grid */}
           <div className="projects-grid">
             {filteredProjects.map((project) => {
-              const thumbnail = getProjectThumbnail(project.id);
+              const thumbnail = getProjectThumbnail(project.id, project.customThumbnail);
               const projectImages = getProjectImages(project.id);
 
               return (
@@ -1368,6 +1449,9 @@ function SinglePagePortfolio() {
           </div>
         </div>
       )}
+
+      {/* Floating Interactive Burrito AI Chatbot Widget */}
+      <BurritoChatWidget />
     </div>
   );
 }

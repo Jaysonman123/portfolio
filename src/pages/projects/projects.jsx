@@ -12,6 +12,7 @@ function Projects() {
 
   // 1. Same folder mapping as your gallery component
   const folderMapping = {
+    9: "burrito",
     8: "lilyanz",
     3: "Incident", 
     6: "Mood",
@@ -49,6 +50,14 @@ function Projects() {
   };
 
   const projectList = [
+    {
+      id: 9,
+      title: "Burrito AI — Intelligent Multi-Model Assistant",
+      description:
+        "A next-generation multi-model AI chatbot workspace with real-time streaming completions, dynamic model routing (GPT-4o, Claude 3.5 Sonnet, Gemini Pro), code highlighting, voice dictation, and themes.",
+      tag: "React.js / Multi-Model AI / Live on Vercel",
+      liveUrl: "https://burritoai.vercel.app/",
+    },
     {
       id: 8,
       title: "Lilyanz Hardware & Supply E-Commerce",
